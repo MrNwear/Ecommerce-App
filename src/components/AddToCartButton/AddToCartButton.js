@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AppButton } from '../index';
 import { View, Text } from 'react-native';
 
-export class AddToCartButton extends React.Component {
+export const AddToCartButton = (props) => {
 
-    renderInitialButton = () => {
-        console.log("Hello");
-        <AppButton title='Add to Cart' />
+    const [quantity, setQuantity] = useState(0);
+    const renderInitialButton = () => {
+        return <AppButton onPress={increaseQuantity} title='Add to Cart' wrapperStyle={{ backgroundColor: '#294B69', borderColor: '#294B69' }} />
     }
-    render() {
-        return this.renderInitialButton();
+    const renderIcrementDecrementButton = () => {
+        return (
+            <View style={{ backgroundColor: '#fff', flexDirection: 'row', padding: 5, marginHorizontal: 5, paddingHorizontal: 5, alignItems: 'center' }}>
+                <AppButton onPress={decreaseQuantity} title='-' />
+                <Text style={{ paddingHorizontal: 15 }}>{quantity}</Text>
+                <AppButton onPress={increaseQuantity} title='+' />
+            </View>
+        );
     }
+    const increaseQuantity = () => {
+        setQuantity(quantity + 1);
+    }
+    const decreaseQuantity = () => {
+        setQuantity(quantity - 1);
+    }
+    return (quantity ? renderIcrementDecrementButton() : renderInitialButton());
+
 }

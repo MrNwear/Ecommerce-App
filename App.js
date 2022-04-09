@@ -9,18 +9,15 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { MainScreen } from './src/components/playaround/MainScreen';
-import { WelcomeGreeting } from './src/components/playaround/Greeting';
-import { AppText } from './src/components/playaround/AppText';
-import PlatformTouchable from './src/components/platformTouchable';
-import { AppButton } from './src/components/index';
-import { Counter } from './src/components/playaround/counter'
+import { PhoneScreen } from './src/screens/phoneScreen/index.js';
+import { ConfirmaionCodeScreen } from './src/screens/confirmationCode';
 import { AddToCartButton } from './src/components/AddToCartButton/AddToCartButton'
 class App extends React.Component {
   render() {
     return (
-      <View style={styles.Container}>
-        <AddToCartButton />
-      </View>
+
+      <ConfirmaionCodeScreen />
+
     );
   }
 }
