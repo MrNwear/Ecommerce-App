@@ -6,12 +6,12 @@ const { width } = Dimensions.get('window');
 const imageWidth = width / 3;
 const imageHeight = imageWidth;
 export const Product = (props) => {
-    const Product = props
+    const { product } = props
     return (
         <View>
-            <Image source={{ uri: Product.imageurl }} style={styles.imageStyle} />
-            <PriceComponent price={Product.price} discount={Product.discount} />
-            <Text>{Product.title}</Text>
+            <Image source={{ uri: product.imageUrl }} style={styles.imageStyle} />
+            <PriceComponent price={product.price} discount={product.discount} />
+            <Text>{product.title}</Text>
         </View>
     );
 }

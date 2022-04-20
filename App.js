@@ -8,19 +8,13 @@
 
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { MainScreen } from './src/components/playaround/MainScreen';
-import { PhoneScreen } from './src/screens/phoneScreen/index.js';
-import { ConfirmaionCodeScreen } from './src/screens/confirmationCode';
-import { AddToCartButton } from './src/components/AddToCartButton/AddToCartButton';
 import { Product } from './src/components//product/index';
+import { HomeScreen } from './src/screens/HomeScreen';
 import { dummyProductWithDiscount, dummyProductWithoutDiscount } from './src/utils/dummydata';
-import { PriceComponent } from './src/components/price';
 class App extends React.Component {
   render() {
     return (
-      <View style={styles.Container}>
-        <Product price={dummyProductWithDiscount.price} discount={dummyProductWithDiscount.discount} title={dummyProductWithDiscount.title} imageurl={dummyProductWithDiscount.imageUrl} />
-      </View>
+      <HomeScreen />
 
 
     );
