@@ -1,20 +1,10 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Product } from './src/components//product/index';
-import { HomeScreen } from './src/screens/HomeScreen';
-import { dummyProductWithDiscount, dummyProductWithoutDiscount } from './src/utils/dummydata';
+import { StyleSheet } from 'react-native';
+import { ProductDetails } from './src/screens/ProductDetails';
 class App extends React.Component {
   render() {
     return (
-      <HomeScreen />
+      <ProductDetails productId={123456} />
 
 
     );

@@ -10,7 +10,7 @@ export const AddToCartButton = (props) => {
     }
     const renderIcrementDecrementButton = () => {
         return (
-            <View style={{ backgroundColor: '#fff', flexDirection: 'row', padding: 5, marginHorizontal: 5, paddingHorizontal: 5, alignItems: 'center' }}>
+            <View style={{ backgroundColor: '#fff', flexDirection: 'row', padding: 5, marginHorizontal: 5, paddingHorizontal: 5, alignItems: 'center', justifyContent: 'center' }}>
                 <AppButton onPress={decreaseQuantity} title='-' />
                 <Text style={{ paddingHorizontal: 15 }}>{quantity}</Text>
                 <AppButton onPress={increaseQuantity} title='+' />

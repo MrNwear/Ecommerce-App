@@ -10,7 +10,7 @@ const styles = ScaledSheet.create({
 
     },
     pricestyle: {
-        fontSize: '30@s',
+        fontSize: '18@s',
         color: TINT_COLOR
     }
 });
