@@ -17,3 +17,6 @@ export const dummyProductWithoutDiscount = {
     description: 'wonderful black T-shirt , it is very hahaha ',
 
 }
+export const dummyCartItem = {
+    product: dummyProductWithDiscount
+}

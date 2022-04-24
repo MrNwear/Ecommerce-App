@@ -19,7 +19,7 @@ export const ProductDetails = (props) => {
                 <Image source={{ uri: product.imageUrl }} style={styles.imageStyle} />
             </View>
             <View style={styles.iconTitleWrapper}>
-                <Icon name="left" type="antdesign" iconStyle={styles.iconStyle} />
+                <Icon name="arrow-back" type="Ionicons" iconStyle={styles.iconStyle} />
                 <View style={styles.titleWrapper}>
                     <Text style={styles.titleStyle}>Product Name</Text>
                 </View>
