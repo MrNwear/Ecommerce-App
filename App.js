@@ -5,10 +5,12 @@ import { CartItemScreen } from './src/screens/CartItemScreen';
 import { ProductDetails } from './src/screens/ProductDetails';
 import { dummyCartItem } from './src/utils/dummydata';
 import { CheckOutScreen } from './src/screens/CheckOutScreen';
+import { SearchScreen } from './src/screens/SearchScreen';
+import { AccountScreen } from './src/screens/AccountScreen';
 class App extends React.Component {
   render() {
     return (
-      <CheckOutScreen />
+      <AccountScreen />
     );
   }
 }
