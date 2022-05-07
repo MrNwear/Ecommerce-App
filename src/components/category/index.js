@@ -8,7 +8,7 @@ const imageHeight = imageWidth;
 export const Category = (props) => {
     const { category } = props
     return (
-        <View>
+        <View style={{ margin: 10 }}>
             <Image source={{ uri: category.imageUrl }} style={styles.imageStyle} />
             <Text>{category.title}</Text>
         </View>

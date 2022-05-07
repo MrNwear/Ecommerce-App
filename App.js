@@ -11,10 +11,11 @@ import { UpdateAccountScreen } from './src/screens/UpdateAccountScreen';
 import { AddAddressScreen } from './src/screens/AddAddressScreen';
 import { Order } from './src/components/Order';
 import { OrdersScreen } from './src/screens/OrdersScreen';
+import { HomeScreen } from './src/screens/HomeScreen';
 class App extends React.Component {
   render() {
     return (
-      <OrdersScreen />
+      <CartItemScreen />
     );
   }
 }

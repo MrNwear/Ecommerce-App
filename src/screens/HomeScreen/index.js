@@ -1,16 +1,18 @@
 import React from "react";
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView, SafeAreaView } from 'react-native';
 import { Category } from '../../components/category';
+import { CategoryListComponent } from "../../components/CategoryList";
 import { Product } from '../../components/product';
-import { dummyData, dummyProductWithoutDiscount } from "../../utils/dummydata";
+import { ProductListComponent } from "../../components/ProductList";
+import { dummyData, dummyProduct1, productListdata } from "../../utils/dummydata";
 import { styles } from "./style";
 export const HomeScreen = (props) => {
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <Text style={styles.headerText}>Categories</Text>
-            <Category category={dummyData} />
+            <CategoryListComponent data={productListdata} horizontal={true} />
             <Text style={styles.headerText}>Products</Text>
-            <Product product={dummyProductWithoutDiscount} />
-        </View>
+            <ProductListComponent data={productListdata} numColumns={2} />
+        </ScrollView>
     );
 }
