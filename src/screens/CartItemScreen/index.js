@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from 'react-native';
+import { View, Text, SafeAreaView } from 'react-native';
 import { AppButton } from "../../components";
 import { CartItem } from "../../components/CartItem";
 import { CartItemListComponent } from "../../components/CartItemList";
@@ -8,7 +8,7 @@ import { dummyCartItemList } from "../../utils/dummydata";
 import { styles } from "./style";
 export const CartItemScreen = (props) => {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <CartItemListComponent data={dummyCartItemList} />
 
 
@@ -17,6 +17,6 @@ export const CartItemScreen = (props) => {
                 <AppButton title='CheckOut' titleStyle={styles.buttonTitle} />
             </View>
 
-        </View>
+        </SafeAreaView>
     );
 }

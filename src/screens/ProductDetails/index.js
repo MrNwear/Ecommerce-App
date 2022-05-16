@@ -2,16 +2,17 @@ import { Icon } from "@rneui/base";
 import React from "react";
 import { View, Text, Image } from 'react-native';
 import { PriceComponent } from '../../components/price'
-import { dummyProductWithoutDiscount } from "../../utils/dummydata";
+import { dummyProduct1 } from "../../utils/dummydata";
 import { styles } from "./style";
 import { AddToCartButton } from "../../components/AddToCartButton/AddToCartButton";
 
 const getProduct = (productId) => {
-    return dummyProductWithoutDiscount;
+    console.log(productId)
+    return dummyProduct1;
 
 }
 export const ProductDetails = (props) => {
-    const { productId } = props;
+    const { productId } = props.route.params;
     const product = getProduct(productId);
     return (
         <View style={styles.container}>

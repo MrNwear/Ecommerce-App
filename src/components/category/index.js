@@ -1,17 +1,18 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
-
+import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 const imageWidth = width / 3;
 const imageHeight = imageWidth;
 export const Category = (props) => {
-    const { category } = props
+    const { category } = props;
+    const navigation = useNavigation();
     return (
-        <View style={{ margin: 10 }}>
+        <TouchableOpacity style={{ margin: 10 }} onPress={() => navigation.navigate('CategoryScreen', { productId: 5 })}>
             <Image source={{ uri: category.imageUrl }} style={styles.imageStyle} />
             <Text>{category.title}</Text>
-        </View>
+        </TouchableOpacity>
     );
 }
 const styles = StyleSheet.create({

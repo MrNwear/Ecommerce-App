@@ -12,10 +12,14 @@ import { AddAddressScreen } from './src/screens/AddAddressScreen';
 import { Order } from './src/components/Order';
 import { OrdersScreen } from './src/screens/OrdersScreen';
 import { HomeScreen } from './src/screens/HomeScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { AppContainer } from './src/Navigation';
+import { Input } from './src/components/Input';
+
 class App extends React.Component {
   render() {
     return (
-      <CartItemScreen />
+      <AppContainer />
     );
   }
 }
