@@ -1,20 +1,14 @@
 import React from 'react';
-import { Input, Icon } from '@rneui/themed';
+import { Input } from '../../components/Input';
 import { View, StyleSheet, Text } from 'react-native'
 import { MainButton } from '../../components/button';
 import { AppButton } from '../../components';
 import { validate } from '../../utils/validate';
+import { useInput } from '../../utils/useInput';
 
 export const PhoneScreen = (props) => {
     const { navigation } = props;
-    const [inputValue, setInputValue] = React.useState({ value: '', isValid: false, touched: false });
-    const UpdateInput = (inputVal) => {
-        setInputValue({
-            value: inputVal,
-            isValid: validate(inputVal, [{ key: 'isPhoneNumber' }]),
-            touched: true,
-        })
-    }
+    const [inputValue, setInputValue] = useInput('', [{ key: 'isPhone' }]);
     const handleAction = () => {
         if (!inputValue.isValid) {
             alert('wrong Phone Number');
@@ -26,7 +20,7 @@ export const PhoneScreen = (props) => {
         <View style={styles.container}>
             <View style={{ marginTop: 30 }} >
                 <Text style={{ textAlign: 'center', color: '#000', fontWeight: '600' }}>Enter Your Phone Number</Text>
-                <Input leftIcon={{ type: 'Entypo', name: 'phone' }} inputContainerStyle={{ width: '100%' }} placeholder='phone' autofocus={false} onChangeText={UpdateInput} />
+                <Input leftIcon={{ type: 'Entypo', name: 'phone' }} bordered inputContainerStyle={{ width: '100%' }} placeholder='phone' autofocus={false} onChangeText={setInputValue} />
 
             </View>
             <View style={{ alignItems: 'stretch' }}>

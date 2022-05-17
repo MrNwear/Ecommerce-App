@@ -3,7 +3,7 @@ import { validate } from "./validate";
 
 export function useInput(userInput, rules) {
 
-    const [inputValue, setInputValue] = React.useState(
+    const [inputValue, setValue] = React.useState(
         {
             value: userInput,
             isValid: false,
@@ -12,9 +12,9 @@ export function useInput(userInput, rules) {
     );
 
     const updateValue = value => {
-        setInputValue({
+        setValue({
             value: value,
-            isValid: validate(userInput, rules),
+            isValid: validate(value, rules),
             touched: true,
         });
 
