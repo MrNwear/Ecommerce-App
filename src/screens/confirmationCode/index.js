@@ -4,14 +4,30 @@ import { View, StyleSheet, Text } from 'react-native'
 import { MainButton } from '../../components/button';
 import { AppButton } from '../../components';
 import { useInput } from '../../utils/useInput';
+import axios from 'axios';
+import { TOKEN_KEY } from '../../utils/constants';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export const ConfirmaionCodeScreen = (props) => {
     const [inputValue, setInputValue] = useInput('', [{ key: 'isConfirmationCode' }]);
+    const [isLoading, setIsLoading] = React.useState(false);
+    const { phone } = props.route.params;
     const handleAction = () => {
-        if (!inputValue.isValid) {
-            alert('wrong Confirmation Code ! ');
-            return;
+        if (inputValue.isValid) {
+            setIsLoading(true);
+            axios.post('/verify/validate', { phone, code: inputValue.value })
+                .then(response => {
+                    const { token } = response.data;
+                    axios.defaults.headers.Authorization = 'Bearer ' + token;
+                    AsyncStorage.setItem(TOKEN_KEY, token);
+
+                })
+                .catch(error => {
+                    console.log('error ' + error);
+                })
+                .finally(() => {
+                    setIsLoading(false);
+                })
         }
-        alert('success !');
     }
     return (
         <View style={styles.container}>
@@ -21,7 +37,7 @@ export const ConfirmaionCodeScreen = (props) => {
 
             </View>
             <View style={{ alignItems: 'stretch' }}>
-                <AppButton title='DONE' wrapperStyle={{ marginBottom: 10 }} onPress={handleAction} />
+                <AppButton title='DONE' wrapperStyle={{ marginBottom: 10 }} onPress={handleAction} disabled={!inputValue.isValid} isLoading={isLoading} />
             </View>
         </View>
     )

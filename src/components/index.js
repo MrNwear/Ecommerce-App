@@ -21,6 +21,7 @@ export class AppButton extends React.Component {
         style={[
           styles.wrapper,
           wrapperStyle,
+          disabled ? { opacity: .3 } : null
         ]}>
         {isLoading ? (
           <ActivityIndicator />

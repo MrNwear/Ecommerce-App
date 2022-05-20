@@ -15,13 +15,21 @@ import { HomeScreen } from './src/screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { AppContainer } from './src/Navigation';
 import { Input } from './src/components/Input';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { TOKEN_KEY } from './src/utils/constants';
 
-class App extends React.Component {
-  render() {
-    return (
-      <AppContainer />
-    );
-  }
+const App = () => {
+  const [token, setToken] = React.useState('wait');
+
+  React.useEffect(() => {
+    AsyncStorage.getItem(TOKEN_KEY).then((val) => {
+      setToken(val);
+    })
+  }, []);
+  return (
+    (token != 'wait') && < AppContainer isAuthenticated={!!token} />
+  );
+
 }
 const styles = StyleSheet.create({
   Container: {
