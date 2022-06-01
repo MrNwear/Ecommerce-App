@@ -5,9 +5,13 @@ import { MainButton } from '../../components/button';
 import { AppButton } from '../../components';
 import { useInput } from '../../utils/useInput';
 import axios from 'axios';
-import { TOKEN_KEY } from '../../utils/constants';
+import { TOKEN_KEY, USER_KEY } from '../../utils/constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-export const ConfirmaionCodeScreen = (props) => {
+import { useDispatch } from 'react-redux';
+import { setToken, setUser } from '../../redux/actions';
+const ConfirmaionCodeScreen = (props) => {
+
+    const dispatch = useDispatch();
     const [inputValue, setInputValue] = useInput('', [{ key: 'isConfirmationCode' }]);
     const [isLoading, setIsLoading] = React.useState(false);
     const { phone } = props.route.params;
@@ -16,9 +20,12 @@ export const ConfirmaionCodeScreen = (props) => {
             setIsLoading(true);
             axios.post('/verify/validate', { phone, code: inputValue.value })
                 .then(response => {
-                    const { token } = response.data;
+                    const { token, userData } = response.data;
+                    dispatch(setToken(token));
+                    dispatch(setUser(userData));
                     axios.defaults.headers.Authorization = 'Bearer ' + token;
                     AsyncStorage.setItem(TOKEN_KEY, token);
+                    AsyncStorage.setItem(USER_KEY, JSON.stringify(userData));
 
                 })
                 .catch(error => {
@@ -48,3 +55,4 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10, justifyContent: 'space-between'
     }
 })
+export default ConfirmaionCodeScreen;

@@ -1,45 +1,25 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import { CartItem } from './src/components/CartItem';
-import { CartItemScreen } from './src/screens/CartItemScreen';
-import { ProductDetails } from './src/screens/ProductDetails';
-import { dummyCartItem, dummyOrder } from './src/utils/dummydata';
-import { CheckOutScreen } from './src/screens/CheckOutScreen';
-import { SearchScreen } from './src/screens/SearchScreen';
-import { AccountScreen } from './src/screens/AccountScreen';
-import { UpdateAccountScreen } from './src/screens/UpdateAccountScreen';
-import { AddAddressScreen } from './src/screens/AddAddressScreen';
-import { Order } from './src/components/Order';
-import { OrdersScreen } from './src/screens/OrdersScreen';
-import { HomeScreen } from './src/screens/HomeScreen';
-import { NavigationContainer } from '@react-navigation/native';
 import { AppContainer } from './src/Navigation';
-import { Input } from './src/components/Input';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { TOKEN_KEY } from './src/utils/constants';
-
+import { TOKEN_KEY, USER_KEY } from './src/utils/constants';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { setToken, setUser } from './src/redux/actions';
 const App = () => {
-  const [token, setToken] = React.useState('wait');
+  const dispatch = useDispatch();
+  const token = useSelector(state => state.auth.token);
 
   React.useEffect(() => {
     AsyncStorage.getItem(TOKEN_KEY).then((val) => {
-      setToken(val);
-    })
+      dispatch(setToken(val));
+      axios.defaults.headers.Authorization = 'Bearer ' + token;
+      AsyncStorage.getItem(USER_KEY).then((val) => {
+        dispatch(setUser(JSON.parse(val)));
+      })
+    });
   }, []);
   return (
-    (token != 'wait') && < AppContainer isAuthenticated={!!token} />
+    (token != '') && < AppContainer isAuthenticated={!!token} />
   );
-
 }
-const styles = StyleSheet.create({
-  Container: {
-    justifyContent: 'space-between',
-    backgroundColor: '#fff'
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-
-});
 export default App;

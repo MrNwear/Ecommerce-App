@@ -3,17 +3,19 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { dummyData } from "../../utils/dummydata";
 import { styles } from "./style";
-
-export const AccountScreen = (props) => {
+import authStore from "../../Flux/AuthStore";
+import { useSelector } from "react-redux";
+const AccountScreen = (props) => {
     const { navigation } = props;
+    const user = useSelector(state => state.auth.user);
     return (
         <View style={styles.conatiner}>
             <View style={styles.contactWrapper}>
                 <Image source={{ uri: dummyData.imageUrl }} style={styles.imageStyle} />
                 <View style={styles.verticalLine} />
                 <View style={styles.nameAndNumberWrapper}>
-                    <Text>{dummyData.name}</Text>
-                    <Text>{dummyData.number}</Text>
+                    <Text>{user.name || 'Anonymous'}</Text>
+                    <Text>{user.phone}</Text>
                 </View>
             </View>
             {rendericonAndNameRow('Profile', 'antdesign', 'user', () => { navigation.navigate('UpdateAccountScreen') })}
@@ -32,3 +34,5 @@ const rendericonAndNameRow = (name, iconType, iconName, onPress) => {
         </TouchableOpacity>
     );
 }
+
+export default AccountScreen;
