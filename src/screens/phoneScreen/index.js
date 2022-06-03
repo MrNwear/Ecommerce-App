@@ -1,31 +1,34 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Input } from '../../components/Input';
 import { View, StyleSheet, Text } from 'react-native'
-import { MainButton } from '../../components/button';
 import { AppButton } from '../../components';
-import { validate } from '../../utils/validate';
 import { useInput } from '../../utils/useInput';
-import axios from 'axios';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { useUpdateEffect } from '../../utils/useUpdateEffect';
+import { SignIn } from '../../redux/actions';
+import { showError } from '../../utils/helpfulFunctions';
 
 export const PhoneScreen = (props) => {
     const { navigation } = props;
-    const [inputValue, setInputValue] = useInput('', [{ key: 'isPhone' }]);
-    const [isLoading, setIsLoading] = React.useState(false);
+    const isLoading=useSelector(state=>state.auth.isSigningIn);
+    const success=useSelector(state=>state.auth.successSigning);
+    const failSigning=useSelector(state=>state.auth.failSigning);
+    const dispatch=useDispatch();
 
-    const handleAction = async () => {
+    const [inputValue, setInputValue] = useInput('', [{ key: 'isPhone' }]);
+   useUpdateEffect(()=>{
+   navigation.navigate('ConfimationCodeScreen', { phone: inputValue.value })
+}
+   ,[success]);
+   useUpdateEffect(()=>{
+    showError('Sign In Fail');
+ }
+    ,[failSigning])
+
+    const handleAction = () => {
         if (inputValue.isValid) {
-            setIsLoading(true);
-            await axios.post('/verify', { phone: inputValue.value })
-                .then(response => {
-                    console.log(response.data)
-                    navigation.replace('ConfimationCodeScreen', { phone: inputValue.value });
-                })
-                .catch(error => {
-                    console.log('error ' + error);
-                })
-                .finally(() => {
-                    setIsLoading(false);
-                })
+          dispatch(SignIn(inputValue.value));
         }
     }
     return (

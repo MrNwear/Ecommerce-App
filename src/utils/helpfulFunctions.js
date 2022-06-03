@@ -8,3 +8,7 @@ export const PriceAfterDiscount = (price, discount = 0) => {
 export const Configure_Axios = () => {
     axios.defaults.baseURL = 'http://www.rncourseproject.com/app';
 }
+
+export const showError=errorMessage =>{
+    alert(errorMessage);
+}
