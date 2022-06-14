@@ -1,39 +1,27 @@
 import React from 'react';
 import { Input, Icon } from '@rneui/themed';
 import { View, StyleSheet, Text } from 'react-native'
-import { MainButton } from '../../components/button';
 import { AppButton } from '../../components';
 import { useInput } from '../../utils/useInput';
-import axios from 'axios';
-import { TOKEN_KEY, USER_KEY } from '../../utils/constants';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useDispatch } from 'react-redux';
-import { setToken, setUser } from '../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { ConfirmCode} from '../../redux/actions';
+import { useUpdateEffect } from '../../utils/useUpdateEffect';
+import { showError } from '../../utils/helpfulFunctions';
 const ConfirmaionCodeScreen = (props) => {
 
     const dispatch = useDispatch();
     const [inputValue, setInputValue] = useInput('', [{ key: 'isConfirmationCode' }]);
-    const [isLoading, setIsLoading] = React.useState(false);
+    const isLoading=useSelector(state=>state.auth.isSigningIn);
+    const failConfirmingCode=useSelector(state=>state.auth.failConfirming);
     const { phone } = props.route.params;
+    useUpdateEffect(()=>{
+        showError('Confirmation code is not valid');
+     }
+        ,[failConfirmingCode])
+
     const handleAction = () => {
         if (inputValue.isValid) {
-            setIsLoading(true);
-            axios.post('/verify/validate', { phone, code: inputValue.value })
-                .then(response => {
-                    const { token, userData } = response.data;
-                    dispatch(setToken(token));
-                    dispatch(setUser(userData));
-                    axios.defaults.headers.Authorization = 'Bearer ' + token;
-                    AsyncStorage.setItem(TOKEN_KEY, token);
-                    AsyncStorage.setItem(USER_KEY, JSON.stringify(userData));
-
-                })
-                .catch(error => {
-                    console.log('error ' + error);
-                })
-                .finally(() => {
-                    setIsLoading(false);
-                })
+            dispatch(ConfirmCode(phone,inputValue.value))
         }
     }
     return (

@@ -47,6 +47,7 @@ export const PhoneScreen = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        paddingVertical:10,
         paddingHorizontal: 10, justifyContent: 'space-between'
     }
 })

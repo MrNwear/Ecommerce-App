@@ -1,10 +1,13 @@
-import { SET_TOKEN , SET_USER , SIGN_IN_START , SIGN_IN_SUCCESS , SIGN_IN_FAIL } from "../actions/actionTypes"
+import { SET_TOKEN , SET_USER , SIGN_IN_START , SIGN_IN_SUCCESS , SIGN_IN_FAIL,ConfirmingCode_FAIL,ConfirmingCode_START,ConfirmingCode_SUCCESS } from "../actions/actionTypes"
 const initialState = {
     token: '',
     user: null,
     isSigningIn:false,
     successSigning:null,
-    failSigning:null
+    failSigning:null,
+    isConfirmingCode:false,
+    successConfirming:null,
+    failConfirming:null
 }
 
 const AuthReducer = (state = initialState, action) => {
@@ -37,6 +40,26 @@ const AuthReducer = (state = initialState, action) => {
                 ...state,
                 isSigningIn:false,
                 failSigning:{}
+                
+            }
+            case ConfirmingCode_START:
+            return {
+                ...state,
+                isConfirmingCode:true
+                
+            }
+            case ConfirmingCode_SUCCESS:
+            return {
+                ...state,
+                isSigningIn:false,
+                successConfirming:{},
+                
+            }
+            case ConfirmingCode_FAIL:
+            return {
+                ...state,
+                isSigningIn:false,
+                failConfirming:{}
                 
             }
         default:

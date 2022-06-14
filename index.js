@@ -3,6 +3,10 @@
  */
 
 import { AppRegistry } from 'react-native';
+if(__DEV__) {
+    import('./ReactotronConfig').then(() => console.log('Reactotron Configured'))
+  }
+  
 import { Provider } from 'react-redux';
 import App from './App';
 import React from 'react';
