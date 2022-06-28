@@ -37,5 +37,16 @@ export const styles = ScaledSheet.create({
         height: 1,
         backgroundColor: '#000',
         marginVertical: '5@vs'
+    },
+    doneOrderStyle:{
+        backgroundColor:'#bbbbbb80',
+        position:'absolute',
+        justifyContent:'center',
+        alignItems:'center',
+        top:0,
+        right:0,
+        left:0,
+        bottom:0,
+        
     }
 })

@@ -11,6 +11,7 @@ function renderCategoryList({ item }) {
 export const CategoryListComponent = (props) => {
 
     return (
-        <FlatList {...props} renderItem={renderCategoryList} />
+        <FlatList {...props}
+         renderItem={renderCategoryList} />
     )
 }

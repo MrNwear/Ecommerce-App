@@ -11,8 +11,8 @@ export const HomeStack = (props) => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
-            <Stack.Screen name='ProductDetails' component={ProductDetails} />
-            <Stack.Screen name='CategoryScreen' component={CategoryScreen} />
+            <Stack.Screen name='ProductDetails' component={ProductDetails} options={{ headerShown: false }} />
+            <Stack.Screen name='CategoryScreen' component={CategoryScreen} options={({route})=>({headerBackTitleVisible:false,title:route.params.category.name})}/>
         </Stack.Navigator>
     )
 }

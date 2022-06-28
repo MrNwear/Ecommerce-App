@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, ScrollView } from 'react-native';
-import { Category } from '../../components/category';
 import { CategoryListComponent } from "../../components/CategoryList";
-import { Product } from '../../components/product';
 import { ProductListComponent } from "../../components/ProductList";
-import { dummyData, dummyProduct1, productListdata } from "../../utils/dummydata";
 import { styles } from "./style";
-import { SafeAreaView } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { getHomeData } from "../../redux/actions/homeActionTypes";
 export const HomeScreen = (props) => {
+    const categories=useSelector(state=>state.home.home.categories);
+    const products=useSelector(state=>state.home.home.products);
+   const dispatch=useDispatch();
+   
+    useEffect(()=>{
+        dispatch(getHomeData());
+   },[])
     return (
-        <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.container}>
+            
             <Text style={styles.headerText}>Categories</Text>
-            <CategoryListComponent data={productListdata} horizontal={true} />
+            <CategoryListComponent data={categories} horizontal={true} />
             <Text style={styles.headerText}>Products</Text>
-            <ProductListComponent data={productListdata} numColumns={2} />
-        </SafeAreaView>
+            <ProductListComponent data={products} numColumns={2} />
+            
+        </ScrollView>
     );
 }

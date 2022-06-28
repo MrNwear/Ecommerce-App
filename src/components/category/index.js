@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { IMAGE_URL } from '../../utils/constants';
+import { cutName } from '../../utils/helpfulFunctions';
 
 const { width } = Dimensions.get('window');
 const imageWidth = width / 3;
@@ -9,9 +11,9 @@ export const Category = (props) => {
     const { category } = props;
     const navigation = useNavigation();
     return (
-        <TouchableOpacity style={{ margin: 10 }} onPress={() => navigation.navigate('CategoryScreen', { productId: 5 })}>
-            <Image source={{ uri: category.imageUrl }} style={styles.imageStyle} />
-            <Text>{category.title}</Text>
+        <TouchableOpacity style={{ margin: 10 }} onPress={() => navigation.navigate('CategoryScreen', {category})}>
+            <Image source={{ uri: IMAGE_URL+'cat-thumbs/resized/'+ category.image }} style={styles.imageStyle} />
+            <Text>{ cutName(category.name,20)}</Text>
         </TouchableOpacity>
     );
 }

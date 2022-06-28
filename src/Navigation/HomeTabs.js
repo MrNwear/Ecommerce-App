@@ -10,17 +10,20 @@ import { HomeStack } from "./HomeStack";
 import { CartStack } from "./CartStack";
 import { SearchStack } from "./SearchStack";
 import { AccountStack } from "./AccountStack";
+import { TabCartIcon } from "../components/tabCartIcon";
+import { useSelector } from "react-redux";
 
 
 const Tabs = createBottomTabNavigator();
 export const HomeTabs = (props) => {
-
+    const cartItemsQuantity=useSelector(state=>state.cart.items.length);
     return (
         <Tabs.Navigator screenOptions={({ route }) => {
-            const IconName = { HomeStack: 'home', CartStack: 'shopping-cart', SearchStack: 'search', AccountStack: 'person' };
+            const IconName = { HomeStack: 'home',  SearchStack: 'search', AccountStack: 'person' };
             const labels = { HomeStack: 'Shop', CartStack: 'Cart', SearchStack: 'search', AccountStack: 'Account' };
             return {
-                tabBarIcon: ({ focused }) => <Icon name={IconName[route.name]} iconStyle={{ color: focused ? TINT_COLOR : 'grey', fontSize: 24 }} />,
+                tabBarIcon: ({ focused }) => route.name==='CartStack'? <TabCartIcon focused={focused} cartItemsQuantity={cartItemsQuantity}/>:
+                 <Icon name={IconName[route.name]} iconStyle={{ color: focused ? TINT_COLOR : 'grey', fontSize: 24 }} />,
                 tabBarLabel: ({ focused }) => <Text style={{ color: focused ? TINT_COLOR : 'grey', fontSize: 16 }} >{labels[route.name]}</Text>
             }
         }

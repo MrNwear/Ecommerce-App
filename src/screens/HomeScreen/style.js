@@ -2,8 +2,7 @@ import { ScaledSheet } from "react-native-size-matters";
 
 export const styles = ScaledSheet.create({
     container: {
-       
-        margin: '10@s'
+        marginTop: '30@s'    
     }
     ,
     headerText: {

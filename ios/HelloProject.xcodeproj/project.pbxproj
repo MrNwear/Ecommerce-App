@@ -14,6 +14,7 @@
 		18A450778BEB5200CC548382 /* libPods-HelloProject-HelloProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CBF80F8D06294D70C3A80A /* libPods-HelloProject-HelloProjectTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B205D30F69AAB8207A50EF4F /* libPods-HelloProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B495F8941F676EC7538BC220 /* libPods-HelloProject.a */; };
+		CEF188F628697D5200D2A2DB /* launch_screen.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CEF188F528697D5200D2A2DB /* launch_screen.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		66121BE40EB803DF53685EA7 /* Pods-HelloProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloProject.debug.xcconfig"; path = "Target Support Files/Pods-HelloProject/Pods-HelloProject.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = HelloProject/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B495F8941F676EC7538BC220 /* libPods-HelloProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HelloProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEF188F528697D5200D2A2DB /* launch_screen.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = launch_screen.jpeg; path = ../../Downloads/launch_screen.jpeg; sourceTree = "<group>"; };
 		D9CBF80F8D06294D70C3A80A /* libPods-HelloProject-HelloProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HelloProject-HelloProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -86,6 +88,7 @@
 		13B07FAE1A68108700A75B9A /* HelloProject */ = {
 			isa = PBXGroup;
 			children = (
+				CEF188F528697D5200D2A2DB /* launch_screen.jpeg */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -145,7 +148,6 @@
 				5E482A7CDC3211D39A301B08 /* Pods-HelloProject-HelloProjectTests.debug.xcconfig */,
 				0037EEF2221E71894B15D162 /* Pods-HelloProject-HelloProjectTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -245,6 +247,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				CEF188F628697D5200D2A2DB /* launch_screen.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

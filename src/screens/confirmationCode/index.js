@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ConfirmCode} from '../../redux/actions';
 import { useUpdateEffect } from '../../utils/useUpdateEffect';
 import { showError } from '../../utils/helpfulFunctions';
+import { errorCodesMapper } from '../../utils/errorCodes';
+import reactotron from 'reactotron-react-native';
 const ConfirmaionCodeScreen = (props) => {
 
     const dispatch = useDispatch();
@@ -15,7 +17,7 @@ const ConfirmaionCodeScreen = (props) => {
     const failConfirmingCode=useSelector(state=>state.auth.failConfirming);
     const { phone } = props.route.params;
     useUpdateEffect(()=>{
-        showError('Confirmation code is not valid');
+        showError(errorCodesMapper[failConfirmingCode.errorCode]);
      }
         ,[failConfirmingCode])
 

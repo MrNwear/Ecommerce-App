@@ -8,7 +8,7 @@ export const SearchStack = (props) => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="SearchScreen" component={SearchScreen} options={{ headerShown: false }} />
-            <Stack.Screen name='ProductDetails' component={ProductDetails} />
+            <Stack.Screen name='ProductDetails' component={ProductDetails}  options={{ headerShown: false }}/>
 
         </Stack.Navigator>
     )

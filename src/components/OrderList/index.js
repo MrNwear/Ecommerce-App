@@ -6,6 +6,7 @@ function renderOrders({ item }) {
 }
 export const OrderListComponent = (props) => {
     return (
-        <FlatList {...props} renderItem={renderOrders} />
+        <FlatList {...props}
+         renderItem={renderOrders} />
     );
 }

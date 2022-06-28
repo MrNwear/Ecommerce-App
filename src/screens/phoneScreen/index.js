@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useUpdateEffect } from '../../utils/useUpdateEffect';
 import { SignIn } from '../../redux/actions';
 import { showError } from '../../utils/helpfulFunctions';
+import { errorCodesMapper } from '../../utils/errorCodes';
 
 export const PhoneScreen = (props) => {
     const { navigation } = props;
@@ -22,7 +23,7 @@ export const PhoneScreen = (props) => {
 }
    ,[success]);
    useUpdateEffect(()=>{
-    showError('Sign In Fail');
+    showError(errorCodesMapper[failSigning.errorCode]);
  }
     ,[failSigning])
 
@@ -35,7 +36,14 @@ export const PhoneScreen = (props) => {
         <View style={styles.container}>
             <View style={{ marginTop: 30 }} >
                 <Text style={{ textAlign: 'center', color: '#000', fontWeight: '600' }}>Enter Your Phone Number</Text>
-                <Input leftIcon={{ type: 'Entypo', name: 'phone' }} bordered inputContainerStyle={{ width: '100%' }} placeholder='phone' keyboardType='numeric' autofocus={false} onChangeText={setInputValue} />
+                <Input
+                 leftIcon={{ type: 'Entypo', name: 'phone' }}
+                  bordered inputContainerStyle={{ width: '100%' }}
+                  placeholder='phone'
+                  keyboardType='numeric'
+                  autofocus={false} onChangeText={setInputValue}
+                  editable={!isLoading}
+                      />
 
             </View>
             <View style={{ alignItems: 'stretch' }}>

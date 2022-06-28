@@ -11,9 +11,9 @@ export const AccountStack = (props) => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="AccountScreen" component={AccountScreen} options={{ headerShown: false }} />
-            <Stack.Screen name='AddAddressScreen' component={AddAddressScreen} />
-            <Stack.Screen name='UpdateAccountScreen' component={UpdateAccountScreen} />
-            <Stack.Screen name='OrdersScreen' component={OrdersScreen} />
+            <Stack.Screen name='AddAddressScreen' component={AddAddressScreen} options={{headerBackTitleVisible:false}} />
+            <Stack.Screen name='UpdateAccountScreen' component={UpdateAccountScreen} options={{headerBackTitleVisible:false}} />
+            <Stack.Screen name='OrdersScreen' component={OrdersScreen} options={{headerBackTitleVisible:false}} />
         </Stack.Navigator>
     )
 }

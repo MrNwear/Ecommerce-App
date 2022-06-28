@@ -22,7 +22,7 @@ export const styles = ScaledSheet.create({
     },
     statusWrapper: {
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'flex-end'
     },
     statusText: {
         fontWeight: 'bold',
